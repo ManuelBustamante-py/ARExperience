@@ -1,11 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
+    <meta charset="UTF-8" />
     <title>Modelo 3D RA</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        background-color: #000;
+      }
+
+      model-viewer {
+        width: 100%;
+        height: 100vh;
+      }
+
+      #ar-button {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #0f9d58;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 10;
+      }
+    </style>
   </head>
   <body>
     <model-viewer 
+      id="modelo"
       src="Model.glb" 
       alt="Un modelo 3D de corazón" 
       auto-rotate 
@@ -14,5 +42,16 @@
       ar-modes="webxr scene-viewer quick-look" 
       style="width: 100%; height: 100vh;">
     </model-viewer>
+
+    <button id="ar-button">Ver en Realidad Aumentada</button>
+
+    <script>
+      const viewer = document.getElementById("modelo");
+      const arButton = document.getElementById("ar-button");
+
+      arButton.addEventListener("click", () => {
+        viewer.activateAR();
+      });
+    </script>
   </body>
 </html>
