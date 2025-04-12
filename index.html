@@ -19,12 +19,12 @@
             gesture-detector
         >
             <a-assets>
-                <!-- Usamos un archivo GLB predeterminado para las pruebas -->
+                <!-- Modelo GLB de prueba -->
                 <a-asset-item id="animated-asset" src="https://cdn.aframe.io/test-models/resources/animated-cube.glb"></a-asset-item>
             </a-assets>
 
-            <!-- Usamos un marcador predeterminado 'hiro' de AR.js -->
-            <a-marker preset="hiro">
+            <!-- Marcador personalizado con archivo marker.patt -->
+            <a-marker type="pattern" url="assets/marker.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
                 <a-entity
                     id="bowser-model"
                     scale="0.5 0.5 0.5"
